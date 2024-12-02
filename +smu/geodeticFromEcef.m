@@ -23,7 +23,7 @@ function [geodetic_latitude__rad, longitude__rad, geodetic_altitude__m] = geodet
 arguments
     x_ecef__m (1,1) {mustBeNumeric, mustBeReal}
     y_ecef__m (1,1) {mustBeNumeric, mustBeReal}
-    z_ecef__m (1,1) {mustBeNumeric, mustBeReal, mustBeValidInputCoordinates(x_ecef__m, y_ecef__m, z_ecef__m)}
+    z_ecef__m (1,1) {mustBeNumeric, mustBeReal}
     precision__m (1,1) {mustBeGreaterThan(precision__m, 0)} = 1e-2
     initial_geodetic_latitude__rad {mustBeScalarOrEmpty, mustBeNumeric, mustBeValidLatitude} = []
 end
@@ -85,18 +85,6 @@ function [N, delta_z] = recursion(delta_z, z, d2, R, e2)
 end
 
 %% Custom validation functions
-
-function mustBeValidInputCoordinates(x, y, z)
-    try
-        mustBeNonzeroMatrix([x; y; z])
-    catch ME
-        if strcmp(ME.identifier, 'mustBeNonzeroMatrix:zeroMatrix')
-            error('Coordinates:Invalid','Coordinates must not all be zero.')
-        else
-            rethrow(ME)
-        end
-    end
-end
 
 function mustBeValidLatitude(latitude)
     if ~isempty(latitude) && abs(latitude) > pi/2
