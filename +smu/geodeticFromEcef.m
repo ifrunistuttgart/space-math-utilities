@@ -1,6 +1,6 @@
-function [geodetic_latitude__rad, longitude__rad, geodetic_altitude__m] = ecef2geodetic(x_ecef__m, y_ecef__m, z_ecef__m, precision__m, initial_geodetic_latitude__rad)
-% ecef2geodetic - Convert ECEF coordinates to geodetic coordinates
-%  [geodetic_latitude__rad, longitude__rad, geodetic_altitude__m] = ecef2geodetic(x_ecef__m, y_ecef__m, z_ecef__m, precision__m, initial_geodetic_latitude__rad)
+function [geodetic_latitude__rad, longitude__rad, geodetic_altitude__m] = geodeticFromEcef(x_ecef__m, y_ecef__m, z_ecef__m, precision__m, initial_geodetic_latitude__rad)
+% geodeticFromEcef - Convert ECEF coordinates to geodetic coordinates
+%  [geodetic_latitude__rad, longitude__rad, geodetic_altitude__m] = geodeticFromEcef(x_ecef__m, y_ecef__m, z_ecef__m, precision__m, initial_geodetic_latitude__rad)
 %  Convert ECEF coordinates to geodetic coordinates using an iterative
 %  algorithm.
 %
@@ -9,7 +9,7 @@ function [geodetic_latitude__rad, longitude__rad, geodetic_altitude__m] = ecef2g
 %   y_ecef__m: scalar, y-coordinate in ECEF frame in meters
 %   z_ecef__m: scalar, z-coordinate in ECEF frame in meters
 %   precision__m: optional, scalar, precision of the calculation in meters
-%   initial_geodetic_latitude__rad: optional, scalar, initial guess for the geodetic latitude in radians
+%   initial_geodetic_latitude__rad: optional, scalar, initial guess for the geodetic latitude in radians (can be used to speed up the calculation)
 %
 %  Outputs:
 %   geodetic_latitude__rad: scalar, geodetic latitude in radians
