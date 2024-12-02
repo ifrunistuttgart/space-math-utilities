@@ -33,7 +33,7 @@ end
 % Calculate connection vectors from hinge point to input points
 d = input_points - rotation_hinge_point;
 % Rotate the connection vectors
-d = space_math_utilities.rotateAroundOrigin(d, rotation_angle__rad, rotation_direction);
+d = smu.rotateAroundOrigin(d, rotation_angle__rad, rotation_direction);
 % Add the rotated connection vectors to the hinge point
 output_points = d + rotation_hinge_point;
 
