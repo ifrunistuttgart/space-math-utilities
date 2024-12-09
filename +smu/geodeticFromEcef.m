@@ -87,7 +87,8 @@ end
 %% Custom validation functions
 
 function mustBeValidLatitude(latitude)
-    if ~isempty(latitude) && abs(latitude) > pi/2
-        mustBeInRange(latitude, pi/2, pi/2)
+    if ~isempty(latitude)
+        mustBeGreaterThanOrEqual(latitude, -pi/2);
+        mustBeLessThanOrEqual(latitude, pi/2);
     end
 end
