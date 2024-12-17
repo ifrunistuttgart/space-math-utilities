@@ -28,9 +28,7 @@ arguments
 end
 
 % Rotation quaternion
-qs = cos(rotation_angle__rad/2);
-qv = sin(rotation_angle__rad/2) * rotation_direction / norm(rotation_direction);
-q = quaternion([qs qv']);
+q = quaternion(axang2quat([rotation_direction', rotation_angle__rad]));
 
 % Perform rotation
 output_points = rotatepoint(q, input_points')';
