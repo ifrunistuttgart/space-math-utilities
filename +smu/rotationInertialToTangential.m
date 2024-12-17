@@ -25,6 +25,6 @@ Y = -angular_momentum / norm(angular_momentum);
 X = velocity_I__m_per_s / norm(velocity_I__m_per_s);
 Z = cross(X, Y);
 
-quaternion_TI = dcm2quat([X,Y,Z]);
+quaternion_TI = rotm2quat([X,Y,Z]);
 
 end

@@ -24,6 +24,6 @@ Y = -angular_momentum / norm(angular_momentum);
 Z = position_I__m / norm(position_I__m);
 X = cross(Y, Z);
 
-quaternion_OI = dcm2quat([X,Y,Z]);
+quaternion_OI = rotm2quat([X,Y,Z]);
 
 end

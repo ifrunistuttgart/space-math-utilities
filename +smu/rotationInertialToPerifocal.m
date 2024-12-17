@@ -30,6 +30,6 @@ P = perigee_vector / norm(perigee_vector);
 W = angular_momentum / norm(angular_momentum);
 Q = cross(W, P);
 
-quaternion_PI = dcm2quat([P,Q,W]);
+quaternion_PI = rotm2quat([P,Q,W]);
 
 end
