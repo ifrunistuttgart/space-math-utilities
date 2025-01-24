@@ -66,7 +66,7 @@ function mustBeValidDate(year, month, fractional_day)
         max_day = 31;
     end
 
-    if fractional_day < 1 || fractional_day > max_day
+    if fractional_day < 1 || fractional_day >= (max_day + 1)
         error('Date:Invalid','The day input is impossible for the given month and year.');
     end
 end
