@@ -6,7 +6,7 @@ if ~(size(M) == [3, 3])
     error(eid, msg);
 end
 
-if M.' * M ~= eye(3)
+if norm(M.' * M - eye(3), 'fro') > 1e-6
     eid = "mustBeSpecialOrthogonalMatrix:notOrthogonal";
     msg = "Input must be an orthogonal matrix.";
     error(eid, msg);
