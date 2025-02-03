@@ -4,8 +4,8 @@ A unit quaternion is a quaternion with a magnitude of 1 and is often used to rep
 While some of the provided functionality might be valid for quaternions with arbitrary magnitudes, the functions are designed to work with unit quaternions.
 
 ## Multiplication
-The product of two (unit) quaternions can be rewritten as matrix-vector products:
-$$ q_1 \otimes q_2 = L(q_1) q_2 = R(q_2) q_1 $$
+The product of two (unit) quaternions can be rewritten as matrix-vector products:\
+$$q_1 \otimes q_2 = L(q_1) q_2 = R(q_2) q_1$$\
 This namespace provides the functions `qpml.m` and `qpmr.m` for computing the so-called left and right quaternion product matrices $L$ and $R$.
 
 ## Structure
