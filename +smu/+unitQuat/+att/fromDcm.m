@@ -20,6 +20,6 @@ end
 rotm_BA_A = dcm_BA';
 
 % Use function to calculate quaternion from rotation matrix
-att_quat_BA = smu.unitQuat.fromRotm(rotm_BA_A);
+att_quat_BA = smu.unitQuat.rot.fromRotm(rotm_BA_A);
 
 end

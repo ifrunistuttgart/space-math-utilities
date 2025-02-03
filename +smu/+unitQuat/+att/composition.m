@@ -21,6 +21,6 @@ arguments
 end
 
 % Use composition of rotation quaternions but in reverse order
-att_quat_CA = smu.RotQuat.composition(att_quat_BA, att_quat_CB);
+att_quat_CA = smu.unitQuat.rot.composition(att_quat_BA, att_quat_CB);
 
 end
