@@ -1,6 +1,6 @@
-function quaternion_TI = rotationInertialToTangential(position_I__m, velocity_I__m_per_s)
+function att_quat_TI = rotationInertialToTangential(position_I__m, velocity_I__m_per_s)
 %% rotationInertialToTangential - Calculate the rotation quaternion from inertial to tangential frame
-%   quaternion_TI = rotationInertialToTangential(position_I__m, velocity_I__m_per_s)
+%   att_quat_TI = rotationInertialToTangential(position_I__m, velocity_I__m_per_s)
 %   Calculates the rotation quaternion from the inertial frame to the
 %   tangential frame given the position and velocity vectors in the inertial
 %   frame.
@@ -10,7 +10,7 @@ function quaternion_TI = rotationInertialToTangential(position_I__m, velocity_I_
 %   velocity_I__m_per_s: 3x1 vector of the velocity in the inertial frame
 %
 %   Outputs:
-%   quaternion_TI: 4x1 quaternion representing the rotation from the
+%   att_quat_TI: 4x1 quaternion representing the rotation from the
 %       inertial frame to the tangential frame
 %
 
@@ -25,6 +25,8 @@ Y = -angular_momentum / norm(angular_momentum);
 X = velocity_I__m_per_s / norm(velocity_I__m_per_s);
 Z = cross(X, Y);
 
-quaternion_TI = rotm2quat([X,Y,Z]);
+dcm_TI = [X, Y, Z]';
+
+att_quat_TI = smu.unitQuat.att.fromDcm(dcm_TI);
 
 end

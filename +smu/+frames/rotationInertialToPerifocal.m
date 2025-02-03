@@ -1,6 +1,6 @@
-function quaternion_PI = rotationInertialToPerifocal(position_I__m, velocity_I__m_per_s, gravitational_parameter__m3_per_s2)
+function att_quat_PI = rotationInertialToPerifocal(position_I__m, velocity_I__m_per_s, gravitational_parameter__m3_per_s2)
 %% rotationInertialToPerifocal - Calculate the rotation quaternion from inertial to perifocal frame
-%   quaternion_PI = rotationInertialToPerifocal(position_I__m, velocity_I__m_per_s, gravitational_parameter__m3_per_s2)
+%   att_quat_PI = rotationInertialToPerifocal(position_I__m, velocity_I__m_per_s, gravitational_parameter__m3_per_s2)
 %   Calculates the rotation quaternion from the inertial frame to the
 %   perifocal frame given the position and velocity vectors in the inertial
 %   frame and the gravitational parameter.
@@ -12,7 +12,7 @@ function quaternion_PI = rotationInertialToPerifocal(position_I__m, velocity_I__
 %       central body
 %
 %   Outputs:
-%   quaternion_PI: 4x1 quaternion representing the rotation from the
+%   att_quat_PI: 4x1 quaternion representing the rotation from the
 %       inertial frame to the perifocal frame
 %
 
@@ -30,6 +30,8 @@ P = perigee_vector / norm(perigee_vector);
 W = angular_momentum / norm(angular_momentum);
 Q = cross(W, P);
 
-quaternion_PI = rotm2quat([P,Q,W]);
+dcm_PI = [P, Q, W]';
+
+att_quat_PI = smu.unitQuat.att.fromDcm(dcm_PI);
 
 end

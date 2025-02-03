@@ -1,6 +1,6 @@
-function quaternion_OI = rotationInertialToLvlh(position_I__m, velocity_I__m_per_s)
+function att_quat_OI = rotationInertialToLvlh(position_I__m, velocity_I__m_per_s)
 %% rotationInertialToLvlh - Calculate the rotation quaternion from inertial to LVLH frame
-%   quaternion_OI = rotationInertialToLvlh(position_I__m, velocity_I__m_per_s)
+%   att_quat_OI = rotationInertialToLvlh(position_I__m, velocity_I__m_per_s)
 %   Calculates the rotation quaternion from the inertial frame to the LVLH
 %   frame given the position and velocity vectors in the inertial frame.
 %
@@ -9,7 +9,7 @@ function quaternion_OI = rotationInertialToLvlh(position_I__m, velocity_I__m_per
 %   velocity_I__m_per_s: 3x1 vector of the velocity in the inertial frame
 %
 %   Outputs:
-%   quaternion_OI: 4x1 quaternion representing the rotation from the
+%   att_quat_OI: 4x1 quaternion representing the rotation from the
 %       inertial frame to the LVLH frame
 %
 
@@ -24,6 +24,8 @@ Y = -angular_momentum / norm(angular_momentum);
 Z = position_I__m / norm(position_I__m);
 X = cross(Y, Z);
 
-quaternion_OI = rotm2quat([X,Y,Z]);
+dcm_OI = [X, Y, Z]';
+
+att_quat_OI = smu.unitQuat.att.fromDcm(dcm_OI);
 
 end

@@ -24,13 +24,14 @@ function output_points = rotateAroundOrigin(input_points, rotation_angle__rad, r
 arguments
     input_points (3,:) {mustBeNumeric, mustBeReal}
     rotation_angle__rad (1,1) {mustBeNumeric, mustBeReal}
-    rotation_direction (3,1) {mustBeReal, mustBeNonzeroMatrix}
+    rotation_direction (3,1) {mustBeReal, smu.argumentValidation.mustBeNonzeroMatrix}
 end
 
 % Rotation quaternion
-q = quaternion(axang2quat([rotation_direction', rotation_angle__rad]));
+q = [cos(rotation_angle__rad / 2); ...
+        sin(rotation_angle__rad / 2) * rotation_direction / norm(rotation_direction)];
 
 % Perform rotation
-output_points = rotatepoint(q, input_points')';
+output_points = smu.unitQuat.rot.rotateVector(q, input_points);
 
 end
