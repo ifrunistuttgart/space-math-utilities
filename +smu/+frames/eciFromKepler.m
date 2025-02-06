@@ -5,6 +5,11 @@ function [pos_eci__m, vel_eci__m_s] = eciFromKepler(mu_m3_s2, semi_major_axis__m
 % and velocity vectors relative to the Earth centered inertial reference frame.
 % Only for elliptic orbits.
 %
+% References:
+% [1] F. L. Markley and J. L. Crassidis, 
+% Fundamentals of Spacecraft Attitude Determination and Control. 
+% New York, NY: Springer New York, 2014. doi: 10.1007/978-1-4939-0802-8.
+%
 %   Inputs:
 %       mu_m3_s2:           gravitational parameter of Earth
 %       semi_major_axis__m: semi major axis of the orbit
