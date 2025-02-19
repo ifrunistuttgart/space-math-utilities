@@ -5,6 +5,11 @@ function u_out = addOutliers(u_in,outlierProbability,outlierStd)
 %   in each step. The added outlier is sampled from a normal distribution 
 %   with the given standard deviation.
 %
+%% References
+% [1] B. Cloez, “Kalman filter with impulse noised outliers : A robust 
+% sequential algorithm to filter data with a large number of outliers,” 
+% arXiv (Cornell University), Jan. 2022‌
+%
 % Inputs:
 %   u_in: numeric input signal of any size or dimension
 %   outlierProbability: numeric positive scalar below one, a probability
@@ -24,7 +29,7 @@ u_dim = size(u_in);
 u_vec = reshape(u_in, [], u_dim(end));
 
 for i=1:numel(u_vec)
-    u_vec(i) = u_vec(i) + (rand < outlierProbability) * (randn * outlierStd); % Large random spikes
+    u_vec(i) = u_vec(i) + (rand < outlierProbability) * (randn * outlierStd); % Large random spikes [1]
 end
 
 u_out = reshape(u_vec, u_dim);

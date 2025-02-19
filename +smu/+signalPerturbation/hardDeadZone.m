@@ -1,9 +1,16 @@
-function u_out = deadZone(u_in,deadZoneParameter)
-%% deadZone - Creates a zone around zero where the output stays zero
-%   u_out = deadZone(u_in,deadZoneParameter)
+function u_out = hardDeadZone(u_in,deadZoneParameter)
+%% hardDeadZone - Creates a hard zone around zero where the output stays zero
+%   u_out = hardDeadZone(u_in,deadZoneParameter)
 %   Mimicks the behaviour of a device that has no output for arbitrarily 
-%   small inputs. The deadzone parameter is the first value of u that is
-%   nonzero.
+%   small inputs. The deadzone parameter is the first value of u_out that is
+%   equal to u_in.
+%
+%% References
+%  [1] C. A. Pérez-Gómez, “Hard Dead Zone and Friction Modeling and 
+%  Identification of a Permanent Magnet DC Motor Non-Linear Model,” 
+%  WSEAS TRANSACTIONS ON SYSTEMS AND CONTROL, vol. 15, pp. 527–536, Oct. 2020
+%  doi: https://doi.org/10.37394/23203.2020.15.51.
+%‌
 %
 % Inputs:
 %   u_in: numeric input signal of any size or dimension
