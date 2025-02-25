@@ -18,11 +18,11 @@ function [day_of_year, fractional_seconds_of_day] = doySodFromCalDat(year, month
 arguments
     year (1,1) {mustBeInteger, mustBeGreaterThan(year, 1582)}
     month (1,1) {mustBeInteger, mustBeInRange(month, 1, 12)}
-    fractional_day (1,1) {mustBeNumeric, mustBeValidDate(year, month, fractional_day), mustBeGregorianDate(year, month, fractional_day)}
+    fractional_day (1,1) {mustBeNumeric, smu.argumentValidation.mustBeValidDate(year, month, fractional_day), smu.argumentValidation.mustBeGregorianDate(year, month, fractional_day)}
 end
 
 %% Determine if year is leap year
-is_leap_year = determineLeapYear(year);
+is_leap_year = smu.time.determineLeapYear(year);
 
 %% Algorithm from [1]
 % only valid after the adoption of the Gregorian calendar and the adoption
@@ -42,52 +42,5 @@ day_of_year = floor(275 * month / 9) - K * floor( (month + 9) / 12 ) + floor(fra
 % assumes that a day always has 86400 seconds
 % thus, leap seconds are ignored
 fractional_seconds_of_day = (fractional_day - day) * 86400;
-
-end
-
-% Helper functions
-
-function is_leap_year = determineLeapYear(year)
-    is_leap_year = (mod(year, 4) == 0 && mod(year, 100) ~= 0) || (mod(year, 400) == 0);
-end
-
-% Custom validation functions
-
-function mustBeValidDate(year, month, fractional_day)
-    if month == 2
-        if determineLeapYear(year)
-            max_day = 29;
-        else
-            max_day = 28;
-        end
-    elseif any(month == [4, 6, 9, 11])
-        max_day = 30;
-    else
-        max_day = 31;
-    end
-
-    if fractional_day < 1 || fractional_day >= (max_day + 1)
-        error('Date:Invalid','The day input is impossible for the given month and year.');
-    end
-end
-
-function mustBeGregorianDate(year, month, day)
-    if year  > 1582
-        return;
-    elseif (year == 1582)
-        
-        if month > 10
-            return;
-        elseif month == 10
-            
-            if day >= 15
-                return;
-            end
-
-        end
-
-    end
-
-    error('Date:NonGregorian','The date must be 15th October 1582 or later.');
 
 end
