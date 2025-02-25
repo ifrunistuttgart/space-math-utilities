@@ -15,11 +15,11 @@ function [year, month, fractional_day] = calDatFromModifiedJulianDate(modified_j
 
 %% Input validation
 arguments
-    modified_julian_date (1,1) {mustBeNonnegative}
+    modified_julian_date (1,1) {mustBeGreaterThanOrEqual(modified_julian_date, -2400000.5)}
 end
 
 %% Algorithm from [1]
-% only valid for non-negative modified julian dates (i.e. mjd >= 0)
+% only valid for non-negative julian dates (i.e. mjd >= -2400000.5)
 JD = modified_julian_date + 2400000.5;
 G = JD + 0.5;
 
