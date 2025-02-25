@@ -28,8 +28,7 @@ arguments
 end
 
 % Rotation quaternion
-q = [cos(rotation_angle__rad / 2); ...
-        sin(rotation_angle__rad / 2) * rotation_direction / norm(rotation_direction)];
+q = smu.unitQuat.rot.fromAxisAngle(rotation_direction, rotation_angle__rad);
 
 % Perform rotation
 output_points = smu.unitQuat.rot.rotateVector(q, input_points);
