@@ -16,9 +16,9 @@ function [day_of_year, fractional_seconds_of_day] = doySodFromCalDat(year, month
 
 %% Input validation
 arguments
-    year (1,1) {mustBeInteger, mustBeGreaterThan(year, 1582)}
-    month (1,1) {mustBeInteger, mustBeInRange(month, 1, 12)}
-    fractional_day (1,1) {mustBeNumeric, smu.argumentValidation.mustBeValidDate(year, month, fractional_day), smu.argumentValidation.mustBeGregorianDate(year, month, fractional_day)}
+    year (1,1) {mustBeInteger}
+    month (1,1) {mustBeInteger, mustBeInRange(month, 1, 12)} = 1
+    fractional_day (1,1) {mustBeNumeric, smu.argumentValidation.mustBeValidDate(year, month, fractional_day), smu.argumentValidation.mustBeGregorianDate(year, month, fractional_day)} = 1
 end
 
 %% Determine if year is leap year

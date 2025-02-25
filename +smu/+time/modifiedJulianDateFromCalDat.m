@@ -18,8 +18,8 @@ function modified_julian_date = modifiedJulianDateFromCalDat(year, month, fracti
 
 arguments
     year (1,1) {mustBeInteger}
-    month (1,1) {mustBeInteger, mustBeInRange(month, 1, 12)}
-    fractional_day (1,1) {mustBeNumeric, smu.argumentValidation.mustBeValidDate(year, month, fractional_day)}
+    month (1,1) {mustBeInteger, mustBeInRange(month, 1, 12)} = 1
+    fractional_day (1,1) {mustBeNumeric, smu.argumentValidation.mustBeValidDate(year, month, fractional_day)} = 1
     NameValueArgs.usesGregorianCalendar (1,1) logical = true
 end
 
