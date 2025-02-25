@@ -1,7 +1,9 @@
 function mustBeGregorianDate(year, month, day)
     if year  > 1582
         return;
-    elseif (year == 1582)
+    end
+    
+    if (year == 1582)
         
         if month > 10
             return;
