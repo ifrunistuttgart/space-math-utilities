@@ -1,6 +1,6 @@
-function rot_quat_BA = fromRotm(rotm_BA_D)
+function rot_quat_BA_D = fromRotm(rotm_BA_D)
 %% Rotation Quaternion from Rotation Matrix
-%   rot_quat_BA = fromRotm(rotm_BA_D)
+%   rot_quat_BA_D = fromRotm(rotm_BA_D)
 %
 %   This function calculates the rotation quaternion from a rotation matrix.
 %
@@ -9,7 +9,7 @@ function rot_quat_BA = fromRotm(rotm_BA_D)
 %     axis expressed in frame D
 %
 %  Outputs:
-%   - rot_quat_BA: Rotation quaternion from frame B to frame A with a rotation
+%   - rot_quat_BA_D: Rotation quaternion from frame B to frame A with a rotation
 %     axis expressed in frame D
 %
 %% References
@@ -65,7 +65,7 @@ else
     w = 0.5 * r;
 end
 
-rot_quat_BA = [w; v];
+rot_quat_BA_D = [w; v];
     
 
 end
