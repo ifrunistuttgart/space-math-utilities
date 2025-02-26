@@ -6,10 +6,11 @@ function att_quat_BA = fromDcm(dcm_BA)
 %   matrix.
 %
 %   Inputs:
-%   - dcm_BA: Direction cosine matrix from frame B to frame A
+%   - dcm_BA: Direction cosine matrix transforming vector representations
+%             in frame A to their equivalent in frame B
 %
 %   Outputs:
-%   - att_quat_BA: Attitude quaternion from frame B to frame A
+%   - att_quat_BA: Attitude quaternion of frame B with respect to frame A
 %
 
 arguments
