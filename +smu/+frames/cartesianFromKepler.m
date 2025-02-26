@@ -25,13 +25,13 @@ function [position__m, velocity__m_per_s] = cartesianFromKepler(semi_major_axis_
 
 
 arguments
-    semi_major_axis__m (1,:) {mustBeNumeric, mustBeReal, mustBeNonzero, mustBeFinite}
-    eccentricity (1,:) {mustBeNumeric, mustBeReal, mustBePositive, mustBeValidEccentricity(eccentricity, semi_major_axis__m), smu.argumentValidation.mustBeEqualLength(semi_major_axis__m, eccentricity, 2, 2)}
-    inclination__rad (1,:) {mustBeNumeric, mustBeReal, smu.argumentValidation.mustBeEqualLength(semi_major_axis__m, inclination__rad, 2, 2)}
-    right_ascension_of_ascending_node__rad (1,:) {mustBeNumeric, mustBeReal, smu.argumentValidation.mustBeEqualLength(semi_major_axis__m, right_ascension_of_ascending_node__rad, 2, 2)}
-    argument_of_periapsis__rad (1,:) {mustBeNumeric, mustBeReal, smu.argumentValidation.mustBeEqualLength(semi_major_axis__m, argument_of_periapsis__rad, 2, 2)}
-    true_anomaly__rad (1,:) {mustBeNumeric, mustBeReal, smu.argumentValidation.mustBeEqualLength(semi_major_axis__m, true_anomaly__rad, 2, 2)}
-    gravitational_parameter__m3_per_s2 (1,:) {mustBeNumeric, mustBeReal, mustBePositive, smu.argumentValidation.mustBeEqualLength(semi_major_axis__m, gravitational_parameter__m3_per_s2, 2, 2)}
+    semi_major_axis__m (1,1) {mustBeNumeric, mustBeReal, mustBeNonzero, mustBeFinite}
+    eccentricity (1,1) {mustBeNumeric, mustBeReal, mustBePositive, mustBeValidEccentricity(eccentricity, semi_major_axis__m)}
+    inclination__rad (1,1) {mustBeNumeric, mustBeReal}
+    right_ascension_of_ascending_node__rad (1,:) {mustBeNumeric, mustBeReal}
+    argument_of_periapsis__rad (1,1) {mustBeNumeric, mustBeReal}
+    true_anomaly__rad (1,1) {mustBeNumeric, mustBeReal}
+    gravitational_parameter__m3_per_s2 (1,1) {mustBeNumeric, mustBeReal, mustBePositive}
 end
 
 %% Abbreviations
