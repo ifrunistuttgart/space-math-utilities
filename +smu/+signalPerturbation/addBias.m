@@ -1,6 +1,6 @@
-function u_out = addBias(u_in,bias)
+function u_out = addBias(u_in, bias)
 %% addBias - Adds a constant bias to a signal
-%   u_out = addBias(u_in,bias)
+%   u_out = addBias(u_in, bias)
 %   Adds the constant bias to all elements of the input signal u_in
 %
 % Inputs:
@@ -12,10 +12,10 @@ function u_out = addBias(u_in,bias)
 %
 
 arguments
-    u_in {mustBeNumeric, mustBeReal, mustBeFinite}
+    u_in {mustBeNumeric, mustBeReal}
     bias (1,1) {mustBeNumeric, mustBeReal, mustBeFinite}
 end
 
-u_out = u_in + bias*ones(size(u_in));
+u_out = u_in + bias;
 
 end

@@ -1,6 +1,6 @@
-function u_out = linScaling(u_in,scale)
+function u_out = linScaling(u_in, scale)
 %% linScaling - Scales the input signal by a constant
-%   u_out = linScaling(u_in,scale)
+%   u_out = linScaling(u_in, scale)
 %   Linear scaling of every element of the input signal u_in by multiplying 
 %   the scale factor
 %
@@ -13,10 +13,10 @@ function u_out = linScaling(u_in,scale)
 %
 
 arguments
-    u_in {mustBeNumeric, mustBeReal, mustBeFinite}
+    u_in {mustBeNumeric, mustBeReal}
     scale (1,1) {mustBeNumeric, mustBeReal, mustBeFinite, mustBePositive}
 end
 
-u_out = scale*u_in;
+u_out = scale * u_in;
 
 end

@@ -1,6 +1,6 @@
-function u_out = discreteSteps(u_in,discreteStepSize)
+function u_out = discreteSteps(u_in, discreteStepSize)
 %% discreteSteps - Discretises the output signal to the given step size
-%   u_out = discreteSteps(u_in,discreteStepSize)
+%   u_out = discreteSteps(u_in, discreteStepSize)
 %   Mimicks the behaviour of a device that has fixed discrete step sizes.
 %
 % Inputs:
@@ -16,13 +16,7 @@ arguments
     discreteStepSize (1,1) {mustBeNumeric, mustBeReal, mustBeFinite, mustBePositive}
 end
 
-u_dim = size(u_in);
-u_vec = reshape(u_in, [], u_dim(end));
 
-for i=1:numel(u_vec)
-    u_vec(i) = round(u_vec(i) / discreteStepSize) * discreteStepSize;
-end
-
-u_out = reshape(u_vec, u_dim);
+u_out = round(u_in / discreteStepSize) * discreteStepSize;
 
 end

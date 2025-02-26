@@ -1,6 +1,6 @@
-function u_out = addRandn(u_in,noiseStd)
+function u_out = addRandn(u_in, noiseStd)
 %% addRandn - Adds a scaled normal distributed noise to the signal
-%   u_out = addRandn(u_in,bias)
+%   u_out = addRandn(u_in, bias)
 %   Adds the scaled noise sampled from the standard normal distribution to 
 %   all elements of the input signal u_in
 %
@@ -13,7 +13,7 @@ function u_out = addRandn(u_in,noiseStd)
 %
 
 arguments
-    u_in {mustBeNumeric, mustBeReal, mustBeFinite}
+    u_in {mustBeNumeric, mustBeReal}
     noiseStd (1,1) {mustBeNumeric, mustBeReal, mustBeFinite, mustBePositive}
 end
 

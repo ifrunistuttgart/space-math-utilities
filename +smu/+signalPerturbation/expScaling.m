@@ -1,6 +1,6 @@
-function u_out = expScaling(u_in,exponent)
+function u_out = expScaling(u_in, exponent)
 %% expScaling - Scales the input signal by an exponent
-%   u_out = expScaling(u_in,exponent)
+%   u_out = expScaling(u_in, exponent)
 %   Exponential scaling of every element of the input signal u_in by 
 %   using the power function with the exponent
 %
@@ -13,7 +13,7 @@ function u_out = expScaling(u_in,exponent)
 %
 
 arguments
-    u_in {mustBeNumeric, mustBeReal, mustBeFinite}
+    u_in {mustBeNumeric, mustBeReal}
     exponent (1,1) {mustBeNumeric, mustBeFinite, mustBeReal, mustBePositive}
 end
 
