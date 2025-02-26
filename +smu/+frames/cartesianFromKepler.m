@@ -25,8 +25,8 @@ function [position__m, velocity__m_per_s] = cartesianFromKepler(semi_major_axis_
 
 
 arguments
-    semi_major_axis__m (1,:) {mustBeNumeric, mustBeReal, mustBeNonzero}
-    eccentricity (1,:) {mustBeNumeric, mustBeReal, mustBePositive, mustNotBeOne, smu.argumentValidation.mustBeEqualLength(semi_major_axis__m, eccentricity, 2, 2)}
+    semi_major_axis__m (1,:) {mustBeNumeric, mustBeReal, mustBeNonzero, mustBeFinite}
+    eccentricity (1,:) {mustBeNumeric, mustBeReal, mustBePositive, mustBeValidEccentricity(eccentricity, semi_major_axis__m), smu.argumentValidation.mustBeEqualLength(semi_major_axis__m, eccentricity, 2, 2)}
     inclination__rad (1,:) {mustBeNumeric, mustBeReal, smu.argumentValidation.mustBeEqualLength(semi_major_axis__m, inclination__rad, 2, 2)}
     right_ascension_of_ascending_node__rad (1,:) {mustBeNumeric, mustBeReal, smu.argumentValidation.mustBeEqualLength(semi_major_axis__m, right_ascension_of_ascending_node__rad, 2, 2)}
     argument_of_periapsis__rad (1,:) {mustBeNumeric, mustBeReal, smu.argumentValidation.mustBeEqualLength(semi_major_axis__m, argument_of_periapsis__rad, 2, 2)}
@@ -90,10 +90,22 @@ end
 
 %% Custom validation functions
 
-function mustNotBeOne(val)
-    if any(val == 1)
-        eid = "mustNotBeOne:isOne";
-        msg = "Argument must not contain values equal to 1.";
+function mustBeValidEccentricity(ecc, a)
+    if any(ecc == 1)
+        eid = "mustBeValidEccentricity:isOne";
+        msg = "Eccentricity must not be equal to 1.";
+        error(eid,msg)
+    end
+
+    if (a > 0) && any(ecc >= 1)
+        eid = "mustBeValidEccentricity:isGreaterThanOneForEllipticalOrbit";
+        msg = "Eccentricity must be less than 1 for elliptical orbits.";
+        error(eid,msg)
+    end
+
+    if (a < 0) && any(ecc <= 1)
+        eid = "mustBeValidEccentricity:isLessThanOneForHyperbolicOrbit";
+        msg = "Eccentricity must be greater than 1 for hyperbolic orbits.";
         error(eid,msg)
     end
 end
