@@ -13,7 +13,7 @@ radius_B = 20;
 
 r_P_log = [];
 sunLum_log = [];
-for i = 1:100000
+for i = 1:10000
     r_P= 100*[2*rand-0.5,rand-0.5,rand-0.5]';
     sunLum = smu.conicalShadowing(r_P,r_A,r_B,radius_A,radius_B);
 
@@ -77,3 +77,5 @@ cb2 = colorbar(ax2,'Position',[0.81 0.1 0.05 0.815]);
 clim([0,1])
 
 setappdata(gcf,'StoreTheLink',hLink); % store the link so that they can rotate and zoom synchronically
+
+cb2.Label.String = "Fractional Visibility";

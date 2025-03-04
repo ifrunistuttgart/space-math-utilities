@@ -8,13 +8,21 @@ function visFrac = conicalShadowing(r_P,r_A,r_B,radius_A,radius_B)
 % Inputs:
 %   r_P: position of point of interest P
 %   r_A: position of object A (emitter) 
-%   r_A: position of object B (occulter)
+%   r_B: position of object B (occulter)
 %   radius_A: radius of object A
 %   radius_B: radius of object B 
 %
 % Outputs:
 %   visFrac: remaining visible fraction of object A as seen from point P
 %
+
+arguments
+    r_P (3,1) {mustBeNumeric, mustBeReal, mustBeFinite}
+    r_A (3,1) {mustBeNumeric, mustBeReal, mustBeFinite}
+    r_B (3,1) {mustBeNumeric, mustBeReal, mustBeFinite}
+    radius_A (1,1) {mustBeNumeric, mustBeReal, mustBeFinite}
+    radius_B (1,1) {mustBeNumeric, mustBeReal, mustBeFinite}
+end
 
 % relative positions
 r_PA = r_A - r_P;
