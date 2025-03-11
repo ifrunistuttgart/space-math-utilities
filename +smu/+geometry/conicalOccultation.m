@@ -1,4 +1,4 @@
-function visFrac = conicalShadowing(r_P,r_A,r_B,radius_A,radius_B)
+function visFrac = conicalOccultation(r_P,r_A,r_B,radius_A,radius_B)
 %% conicalShadowing - Calculate the shadowing given two spheres and a point of interest
 %   visFrac = conicalShadowing(r_P,r_A,r_B,radius_A,radius_B)
 %   Calculates the remaining visible fraction of circular object A that is 

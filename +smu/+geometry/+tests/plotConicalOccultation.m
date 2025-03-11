@@ -1,28 +1,28 @@
+%% plotConicalOccultation to test and plot results from the conicalOccultation function
+% P is the position of interest A is the light source, B is the occulting object
 clc
 clear
 close all
-
-%% Example small
-% P is the position of interest A is the light source, B is the shading object
 
 r_A = [0,0,0]';
 r_B = [50,0,0]';
 
 radius_A = 15;
-radius_B = 20;
+radius_B = 5;
 
 r_P_log = [];
 sunLum_log = [];
 for i = 1:10000
-    r_P= 100*[2*rand-0.5,rand-0.5,rand-0.5]';
-    sunLum = smu.conicalShadowing(r_P,r_A,r_B,radius_A,radius_B);
+    r_P= 100*[2*rand,rand-0.5,rand-0.5]';
+    sunLum = smu.geometry.conicalOccultation(r_P,r_A,r_B,radius_A,radius_B);
 
     r_P_log = [r_P_log,r_P];
     sunLum_log = [sunLum_log,sunLum];
 end
 
 %% Plotting 2D
-f = figure;
+figure;
+title("Conical Shadowing 2D")
 hold on
 axis equal
 
@@ -61,9 +61,10 @@ sc = scatter3(ax2,r_P_log(1,idx),r_P_log(2,idx),r_P_log(3,idx),25,sunLum_log(idx
 sc.MarkerFaceAlpha = 0.1;
 % hold on
 axis equal
+title(ax1,"Conical Shadowing 3D")
 
 hLink = linkprop([ax1,ax2],{'XLim','YLim','ZLim','CameraUpVector','CameraPosition','CameraTarget'});
-axis([-50,150,-100,100,-100,100])
+axis([-50,200,-100,100,-100,100])
 
 
 % Hide the top axes
