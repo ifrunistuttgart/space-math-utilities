@@ -1,9 +1,9 @@
 function visFrac = conicalOccultation(r_P,r_A,r_B,radius_A,radius_B)
-%% conicalShadowing - Calculate the shadowing given two spheres and a point of interest
-%   visFrac = conicalShadowing(r_P,r_A,r_B,radius_A,radius_B)
+%% conicalOccultation - Calculate the occultation given two spheres and a point of interest
+%   visFrac = conicalOccultation(r_P,r_A,r_B,radius_A,radius_B)
 %   Calculates the remaining visible fraction of circular object A that is 
 %   occulted by the circular object B as seen from point P. All positions
-%   must be in the same coordinate frame. 
+%   must be in the same reference frame and coordinates. 
 %
 % Inputs:
 %   r_P: position of point of interest P
@@ -16,6 +16,7 @@ function visFrac = conicalOccultation(r_P,r_A,r_B,radius_A,radius_B)
 %   visFrac: remaining visible fraction of object A as seen from point P
 %
 %% References
+% based on routine in
 % [1] O. Montenbruck and E. Gill, Satellite Orbits. Berlin, 
 % Heidelberg: Springer Berlin Heidelberg, 2000. doi: 10.1007/978-3-642-58351-3
 % p.82 ff.
