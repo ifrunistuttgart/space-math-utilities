@@ -20,7 +20,7 @@ end
 
 %% Algorithm from [1]
 % only valid for non-negative julian dates (i.e. mjd >= -2400000.5)
-JD = modified_julian_date + 2400000.5;
+JD = smu.time.jdFromMjd(modified_julian_date);
 G = JD + 0.5;
 
 Z = floor(G);
