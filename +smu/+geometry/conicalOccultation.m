@@ -3,7 +3,7 @@ function visFrac = conicalOccultation(r_P,r_A,r_B,radius_A,radius_B)
 %   visFrac = conicalOccultation(r_P,r_A,r_B,radius_A,radius_B)
 %   Calculates the remaining visible fraction of circular object A that is 
 %   occulted by the circular object B as seen from point P. All positions
-%   must be in the same reference frame and coordinates. 
+%   must be in the same reference frame. 
 %
 % Inputs:
 %   r_P: position of point of interest P
