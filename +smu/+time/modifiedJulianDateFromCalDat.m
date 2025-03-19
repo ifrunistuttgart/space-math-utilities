@@ -41,6 +41,6 @@ end
 JD = floor(365.25 * (year + 4716)) + floor(30.601 * (month + 1)) + fractional_day + B - 1524.5;
 
 %% Convert to Modified Julian date
-modified_julian_date = JD - 2400000.5;
+modified_julian_date = smu.time.mjdFromJd(JD);
 
 end
